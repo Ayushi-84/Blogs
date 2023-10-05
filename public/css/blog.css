@@ -166,6 +166,8 @@ ul {
     display: flex;
     flex-direction: row;
     padding: 1%;
+    align-items: center;
+    height: 100%;
   }
 
   .single-cta i {
