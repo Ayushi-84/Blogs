@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My blogs-Blog</title>
-    <link href="/css/blog.css"  rel="stylesheet">
+    <link href="/css/blog.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
@@ -38,27 +39,29 @@
         <div class="footer">
             <div class="card">
                 <div class="element1">
-                    <div class="single-cta" style="margin-bottom: 4%;">
-                        <div class="cta-text">
-                            <h4>Mail us</h4>
-                            <span>contact@renderbit.com</span>
-                        </div>
-                    </div>
-                    <div class="single-cta" style="margin-bottom: 4%;">
+                    <div class="single-cta">
+                      <i class="far fa-envelope-open"></i>
+                      <div class="cta-text">
+                          <h4>Mail us</h4>
+                          <span>info@expertlancing.com</span>
+                      </div>
+                  </div>
+                    <div class="single-cta">
+                        <i class="fas fa-phone"></i>
                         <div class="cta-text">
                             <h4>Call us</h4>
-                            <span>+91 83730 57252</span>
+                            <span>+1 (619).798.8133 (US)</span>
                         </div>
                     </div>
-                    <div class="single-cta" style="margin-bottom: 1%;">
-                        <div class="cta-text">
-                            <h4>Find us</h4>
-                            <span>Flat No 4-d, Block-d, 4th Floor 949, Jhilpar Road, P O-Narendrapur, Kolkata, West
-                                Bengal 700103</span>
-                        </div>
-                    </div>
+                    <div class="single-cta">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <div class="cta-text">
+                          <h4>Find us</h4>
+                          <span>Unit No.1004 , 10th Floor, Iris Tech Park, Sohna Road, Gurugram</span>
+                      </div>
+                  </div>
 
-                </div>
+         </div>
                 <div class="element2">
 
                     <div class="footer-widget">
