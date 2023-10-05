@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 body {
     margin: 0px;
@@ -13,6 +13,7 @@ body {
     width: 100%;
     height: 100vh;
     background-color: white;
+    position: relative;
 }
 
 header {
@@ -31,7 +32,7 @@ header div {
     color: black;
     font-size: 24px;
     font-weight: 700;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     width: 60%;
 }
 
@@ -48,7 +49,7 @@ header div {
     grid-template-columns: auto auto auto;
     gap: 60px;
     width: 90%;
-    height: auto
+    height: auto;
 }
 
 .sub-grid {
@@ -75,7 +76,7 @@ header div {
     color: black;
     font-size: 24px;
     font-weight: 700;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     margin-top: 3%;
     width: 100%;
     display: flex;
@@ -87,7 +88,7 @@ header div {
     color: rgb(155, 153, 153);
     font-size: 16px;
     font-weight: 500;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     margin-top: 2%;
     display: block;
     text-overflow: ellipsis;
@@ -118,7 +119,7 @@ header div {
     flex-direction: column;
 }
 
-.element1{
+.element1 {
     background-color: rgb(240, 240, 240);
     width: 100%;
     height: 20vh;
@@ -128,14 +129,13 @@ header div {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-  }
+}
 
 .element2 {
     display: flex;
     height: 50vh;
     justify-content: space-around;
 }
-
 
 .element3 {
     display: flex;
@@ -161,23 +161,23 @@ ul {
     border-bottom: 1px solid #373636;
 }
 
-.single-cta{
+.single-cta {
     width: 33%;
     display: flex;
     flex-direction: row;
     padding: 1%;
     align-items: center;
     height: 100%;
-  }
+}
 
-  .single-cta i {
+.single-cta i {
     color: #000;
     font-size: 2.5vw;
-  }
-  .cta-text {
+}
+.cta-text {
     padding-left: 1.3vw;
     display: inline-block;
-  }
+}
 
 .cta-text {
     padding-left: 1.3vw;
@@ -188,11 +188,11 @@ ul {
     font-size: 1.7vw;
     font-weight: 600;
     margin-bottom: 1%;
-  }
-  .cta-text span {
+}
+.cta-text span {
     color: #bbb9b9;
     font-size: 1.3vw;
-  }
+}
 
 .footer-widget {
     width: 32%;
@@ -271,8 +271,8 @@ ul {
 .subscribe-form input {
     width: 100%;
     padding: 1vw 2vw;
-    background: #2E2E2E;
-    border: 1px solid #2E2E2E;
+    background: #2e2e2e;
+    border: 1px solid #2e2e2e;
     color: #fff;
     font-size: 1.2vw;
 }
@@ -328,4 +328,87 @@ ul {
 
 .footer-menu {
     margin-top: 1vh;
+}
+
+.plus-button {
+    position: fixed;
+    background-color: rgb(155, 153, 153);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.plus-button i {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.create-blog {
+    display: none;
+    position: fixed;
+    backface-visibility: hidden;
+    background-color: rgba(155, 153, 153, 0.5);
+    width: 100%;
+    height: 100vh;
+    bottom: 0px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.create-box {
+    width: 600px;
+    height: 400px;
+    background-color: #fff;
+    margin-bottom: 100px;
+    margin-right: 100px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details {
+    width: 74%;
+    height: 7%;
+    border: 1px solid rgb(155, 153, 153);
+    margin-top: 2%;
+    border-radius: 10px;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+.details-t {
+    width: 74%;
+    border: 1px solid rgb(155, 153, 153);
+    margin-top: 2%;
+    border-radius: 10px;
+    padding-right: 3%;
+    padding-left: 3%;
+    resize: none;
+}
+
+input:focus {
+    outline: none;
+}
+textarea:focus {
+    outline: none;
+}
+
+.create-button {
+    width: 80%;
+    height: 10%;
+    border: 1px solid #cacaca;
+    margin-top: 5%;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(155, 153, 153);
 }

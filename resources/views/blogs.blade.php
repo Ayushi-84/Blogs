@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My blogs-Blog</title>
-    <link href="/css/blog.css?v=6" rel="stylesheet">
+    <link href="/css/blog.css?v=2" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="/js/blog.js"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <header>
             <img src="/images/buddy.png" style="width: 5%;height:80%" />
             <div>
@@ -60,8 +61,7 @@
                           <span>Unit No.1004 , 10th Floor, Iris Tech Park, Sohna Road, Gurugram</span>
                       </div>
                   </div>
-
-         </div>
+                </div>
                 <div class="element2">
 
                     <div class="footer-widget">
@@ -130,7 +130,24 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="create-blog" id="createBlog">
+          <form method="POST" action="/blogs" class="create-box">
+            @csrf
+            <div class="title-head" style="margin-bottom: 3%">
+                Create new blog
+            </div>
+            <input name="user_id" id="user_id" hidden value="{{auth()->id()}}"/>
+            <input name="slug" id="slug" type="text" class="details" required placeholder="Enter slug for your post"/>
+            <input name="title" id="title" type="text" class="details" required placeholder="Enter title for your post"/>
+            <textarea name="content" id="content" class="details-t" required placeholder="Enter content for your post" rows="3"></textarea>
+            <textarea name="excerpt" id="excerpt" class="details-t" required placeholder="Enter excerpt for your post" rows="3"></textarea>
+            <button type="submit" class="create-button">Create new blog</button>
+        </form>
+        </div>
+        <button class="plus-button" onclick="showCreateBlog()">
+            <i class="far fa-plus"></i>
+        </button>
     </div>
 </body>
 

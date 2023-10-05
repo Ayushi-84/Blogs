@@ -20,4 +20,5 @@ Route::get('/',[LoginController::class,'login']);
 Route::post('/',[LoginController::class,'verify']);
 Route::get('signup',[RegisterController::class,'create']);
 Route::post('signup',[RegisterController::class,'register']);
-Route::get('myBlogs',[BlogsController::class,'blogs']);
+Route::get('blogs',[BlogsController::class,'blogs']);
+Route::post('blogs',[BlogsController::class,'createpost']);
