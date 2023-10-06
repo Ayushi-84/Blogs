@@ -18,7 +18,7 @@
 <div style="width:100%;height:15%;color:white;font-size:20px;font-weight:600;display:flex;justify-content:center;align-items:center;background-color:rgb(53, 53, 252);font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
     Sign In
 </div>
-<form method="POST" action="/" style="width:100%;height:71%;display:flex;justify-content:center;align-items:center;flex-direction:column">
+<form method="POST" action="/signin" style="width:100%;height:71%;display:flex;justify-content:center;align-items:center;flex-direction:column">
     @csrf
     <input name="email" id="email" type="email" style="width:74%;height:15%;border:1px solid rgb(169, 169, 252);border-radius:10px;padding-right:3%;padding-left:3%;" required placeholder="Enter email"/>
     <input name="password" id="password" type="password" style="width:74%;height:15%;border:1px solid rgb(169, 169, 252);margin-top:5%;border-radius:10px;padding-right:3%;padding-left:3%;" required placeholder="Enter your password"/>

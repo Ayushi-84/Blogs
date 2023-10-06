@@ -21,6 +21,6 @@ class RegisterController extends Controller
 
         User::create($data);
 
-        return redirect('/');
+        return redirect('/signin');
     }
 }

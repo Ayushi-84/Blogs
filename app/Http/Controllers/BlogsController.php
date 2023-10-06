@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class BlogsController extends Controller
 {
     public function blogs(){
-        return view('blogs',['blogs'=>blogs::all()]);
+        return view('blogs',['blogs'=>blogs::all()->user()]);
     }
 
     public function createpost(){

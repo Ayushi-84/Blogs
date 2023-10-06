@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[LoginController::class,'login']);
-Route::post('/',[LoginController::class,'verify']);
+Route::get('/signin',[LoginController::class,'login']);
+Route::post('/signin',[LoginController::class,'verify']);
 Route::get('signup',[RegisterController::class,'create']);
 Route::post('signup',[RegisterController::class,'register']);
-Route::get('blogs',[BlogsController::class,'blogs']);
-Route::post('blogs',[BlogsController::class,'createpost']);
+Route::get('/',[BlogsController::class,'blogs']);
+Route::post('/',[BlogsController::class,'createpost']);
 Route::get('details',[BlogsController::class,'blogsdetailview']);
