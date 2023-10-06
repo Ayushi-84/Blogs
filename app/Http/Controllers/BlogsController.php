@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\blogs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 class BlogsController extends Controller
@@ -12,7 +13,14 @@ class BlogsController extends Controller
         return view('blogs',['blogs'=>blogs::all()->sortByDesc('id')]);
     }
     public function myblogs(){
+        if(auth()->check())
+        {
         return view('myBlog',['blogs'=>blogs::user(auth()->id())->sortByDesc('id')]);
+        }
+        else{
+            return redirect('/');
+        }
+
     }
 
     public function createpost(){

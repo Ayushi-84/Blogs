@@ -19,8 +19,10 @@ class RegisterController extends Controller
              "password"=>'required|min:3|max:20'
         ]);
 
-        User::create($data);
+        $user=User::create($data);
+        
+          auth()->login($user);
 
-        return redirect('/signin');
+        return redirect('/');
     }
 }
