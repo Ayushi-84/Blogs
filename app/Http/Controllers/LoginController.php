@@ -17,7 +17,7 @@ class LoginController extends Controller
 
         if(auth()->attempt($data))
         {
-            return redirect('/')->with('success','Login Successfully');
+            return redirect('/myBlog')->with('success','Login Successfully');
         }
 
         return back()->withErrors(['email'=>"Invalid/Incorrect email address"]);

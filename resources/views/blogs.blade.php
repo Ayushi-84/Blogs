@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My blogs-Blog</title>
+    <title>All blogs-Blog</title>
     <link href="/css/blog.css?v=4" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <script src="/js/blog.js"></script>
@@ -18,6 +18,7 @@
             <div>
                 Renderbit Technologies
             </div>
+
         </header>
         <div class="middle-body">
             <div class="grid-div">
@@ -32,7 +33,7 @@
                         <div class="excerpt-head">
                             {{ $blog->excerpt }}
                         </div>
-                     <a href={{"/details?slug=$blog->slug"}} style="display:flex;align-self:flex-end;justify-self: flex-end;margin-right:10px;">Know more</a>
+                     <a href={{"/details/$blog->slug"}} style="display:flex;align-self:flex-end;justify-self: flex-end;margin-right:10px;">Know more</a>
                     </div>
                 @endforeach
             </div>

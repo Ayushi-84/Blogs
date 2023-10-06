@@ -13,9 +13,13 @@ class blogs extends Model
 
   protected $guarded=[];
 
-  public function slug()
+  public static function slug($slug)
 {
-return $this->belongsTo('App\Models\blogs');
+return static::all()->firstWhere('slug',$slug);
+}
+  public static function user($user)
+{
+return static::all()->where('user_id',$user);
 }
 
 }

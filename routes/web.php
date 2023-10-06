@@ -18,8 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/signin',[LoginController::class,'login']);
 Route::post('/signin',[LoginController::class,'verify']);
-Route::get('signup',[RegisterController::class,'create']);
-Route::post('signup',[RegisterController::class,'register']);
+Route::get('/signup',[RegisterController::class,'create']);
+Route::post('/signup',[RegisterController::class,'register']);
 Route::get('/',[BlogsController::class,'blogs']);
+Route::get('/myBlog',[BlogsController::class,'myblogs']);
 Route::post('/',[BlogsController::class,'createpost']);
-Route::get('details',[BlogsController::class,'blogsdetailview']);
+Route::get('/details/{slug}',[BlogsController::class,'blogsdetailview']);

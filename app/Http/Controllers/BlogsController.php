@@ -11,6 +11,9 @@ class BlogsController extends Controller
     public function blogs(){
         return view('blogs',['blogs'=>blogs::all()]);
     }
+    public function myblogs(){
+        return view('myBlog',['blogs'=>blogs::user(auth()->id())]);
+    }
 
     public function createpost(){
 
@@ -36,8 +39,9 @@ class BlogsController extends Controller
 
     }
 
-    public function blogsdetailview() {
-         return view('blogDetailsView',['blog'=>blogs::select('title','content')->where('slug',request()->query("slug"))->get()]);
+    public function blogsdetailview($slug) {
+        //  return view('blogDetailsView',['blog'=>blogs::select('title','content')->where('slug',request()->query("slug"))->get()]);
+         return view('blogDetailsView',['blog'=>blogs::slug($slug)]);
             }
 
 }

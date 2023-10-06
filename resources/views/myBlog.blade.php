@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My blogs-Blog</title>
-    <link href="/css/blog.css?v=1" rel="stylesheet">
+    <link href="/css/blog.css?v=4" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <script src="/js/blog.js"></script>
 </head>
@@ -18,15 +18,24 @@
             <div>
                 Renderbit Technologies
             </div>
+
         </header>
         <div class="middle-body">
-            <div style="width: 90%;height:400px;background:white;padding-left:5%;padding-right:5%;display:flex;flex-direction:row;align-items:center;justify-content:center">
-            <div class="title-head">
-                {{$blog->title}}
-            </div>
-            <div class="excerpt-head">
-                {{$blog->content}}
-            </div>
+            <div class="grid-div">
+                @foreach ($blogs as $blog)
+                    <div class="sub-grid">
+                        <div class="img-head">
+                            <img src="/images/language.jpg" style="width: 80%;height:90%" />
+                        </div>
+                        <div class="title-head">
+                            {{ $blog->title }}
+                        </div>
+                        <div class="excerpt-head">
+                            {{ $blog->excerpt }}
+                        </div>
+                     <a href={{"/details?slug=$blog->slug"}} style="display:flex;align-self:flex-end;justify-self: flex-end;margin-right:10px;">Know more</a>
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="footer">
@@ -123,6 +132,23 @@
             </div>
         </div>
 
+        <div class="create-blog" id="createBlog">
+          <form method="POST" action="/blogs" class="create-box">
+            @csrf
+            <div class="title-head" style="margin-bottom: 3%">
+                Create new blog
+            </div>
+            <input name="user_id" id="user_id" hidden value="{{auth()->id()}}"/>
+            <input name="slug" id="slug" type="text" class="details" required placeholder="Enter slug for your post"/>
+            <input name="title" id="title" type="text" class="details" required placeholder="Enter title for your post"/>
+            <textarea name="content" id="content" class="details-t" required placeholder="Enter content for your post" rows="3"></textarea>
+            <textarea name="excerpt" id="excerpt" class="details-t" required placeholder="Enter excerpt for your post" rows="3"></textarea>
+            <button type="submit" class="create-button">Create new blog</button>
+        </form>
+        </div>
+        <button class="plus-button" onclick="showCreateBlog()">
+            <i class="far fa-plus"></i>
+        </button>
     </div>
 </body>
 
