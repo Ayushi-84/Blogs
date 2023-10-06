@@ -20,21 +20,13 @@
             </div>
         </header>
         <div class="middle-body">
-            <div class="grid-div">
-                @foreach ($blogs as $blog)
-                    <div class="sub-grid">
-                        <div class="img-head">
-                            <img src="/images/language.jpg" style="width: 80%;height:90%" />
-                        </div>
-                        <div class="title-head">
-                            {{ $blog->title }}
-                        </div>
-                        <div class="excerpt-head">
-                            {{ $blog->excerpt }}
-                        </div>
-                     <a href={{"/details?slug=$blog->slug"}} style="display:flex;align-self:flex-end;justify-self: flex-end;margin-right:10px;">Know more</a>
-                    </div>
-                @endforeach
+            <div style="width: 90%;height:400px;background:white;padding-left:5%;padding-right:5%;display:flex;flex-direction:row;align-items:center;justify-content:center">
+            <div class="title-head">
+                {{$blog[0]->title}}
+            </div>
+            <div class="excerpt-head">
+                {{$blog[0]->content}}
+            </div>
             </div>
         </div>
         <div class="footer">
@@ -131,23 +123,6 @@
             </div>
         </div>
 
-        <div class="create-blog" id="createBlog">
-          <form method="POST" action="/blogs" class="create-box">
-            @csrf
-            <div class="title-head" style="margin-bottom: 3%">
-                Create new blog
-            </div>
-            <input name="user_id" id="user_id" hidden value="{{auth()->id()}}"/>
-            <input name="slug" id="slug" type="text" class="details" required placeholder="Enter slug for your post"/>
-            <input name="title" id="title" type="text" class="details" required placeholder="Enter title for your post"/>
-            <textarea name="content" id="content" class="details-t" required placeholder="Enter content for your post" rows="3"></textarea>
-            <textarea name="excerpt" id="excerpt" class="details-t" required placeholder="Enter excerpt for your post" rows="3"></textarea>
-            <button type="submit" class="create-button">Create new blog</button>
-        </form>
-        </div>
-        <button class="plus-button" onclick="showCreateBlog()">
-            <i class="far fa-plus"></i>
-        </button>
     </div>
 </body>
 

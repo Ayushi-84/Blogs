@@ -22,3 +22,4 @@ Route::get('signup',[RegisterController::class,'create']);
 Route::post('signup',[RegisterController::class,'register']);
 Route::get('blogs',[BlogsController::class,'blogs']);
 Route::post('blogs',[BlogsController::class,'createpost']);
+Route::get('details',[BlogsController::class,'blogsdetailview']);

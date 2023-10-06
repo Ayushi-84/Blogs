@@ -35,4 +35,9 @@ class BlogsController extends Controller
         }
 
     }
+
+    public function blogsdetailview() {
+         return view('blogDetailsView',['blog'=>blogs::select('title','content')->where('slug',request()->query("slug"))->get()]);
+            }
+
 }

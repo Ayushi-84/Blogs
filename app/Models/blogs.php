@@ -13,4 +13,9 @@ class blogs extends Model
 
   protected $guarded=[];
 
+  public function slug()
+{
+return $this->belongsTo('App\Models\blogs');
+}
+
 }
