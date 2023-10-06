@@ -11,7 +11,7 @@ class blogs extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-  protected $guarded=[];
+  protected $guarded=['id'];
 
   public static function slug($slug)
 {

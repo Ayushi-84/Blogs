@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Validator;
 class BlogsController extends Controller
 {
     public function blogs(){
-        return view('blogs',['blogs'=>blogs::all()]);
+        return view('blogs',['blogs'=>blogs::all()->sortByDesc('id')]);
     }
     public function myblogs(){
-        return view('myBlog',['blogs'=>blogs::user(auth()->id())]);
+        return view('myBlog',['blogs'=>blogs::user(auth()->id())->sortByDesc('id')]);
     }
 
     public function createpost(){
