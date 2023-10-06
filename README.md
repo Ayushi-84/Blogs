@@ -9,7 +9,7 @@
 
 ## Task List
 
-- Any user can sign up and create a blog of their own. When signing up, you have to record the user's full name, unique email address, password (8 characters minimum with 1 special character required) and choice of unique username.<span style={{color:red}}>Completed</span>
+- Any user can sign up and create a blog of their own. When signing up, you have to record the user's full name, unique email address, password (8 characters minimum with 1 special character required) and choice of unique username.<span color='red'>Completed</span>
 
 - The homepage of the blog can be viewed by anyone without login. The homepage shall show a list of all blog posts by all users, with most recent posts on top. 
 
