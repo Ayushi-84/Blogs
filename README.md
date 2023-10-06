@@ -9,19 +9,19 @@
 
 ## Task List
 
-- Any user can sign up and create a blog of their own. When signing up, you have to record the user's full name, unique email address, password (8 characters minimum with 1 special character required) and choice of unique username.<span color='red'>Completed</span>
+- Any user can sign up and create a blog of their own. When signing up, you have to record the user's full name, unique email address, password (8 characters minimum with 1 special character required) and choice of unique username. **Completed**
 
-- The homepage of the blog can be viewed by anyone without login. The homepage shall show a list of all blog posts by all users, with most recent posts on top. 
+- The homepage of the blog can be viewed by anyone without login. The homepage shall show a list of all blog posts by all users, with most recent posts on top. **Completed**
 
 - The list of blog posts shall be paginated, with 8 posts per page.
 
-- On clicking a post, a user can view the entire post content.
+- On clicking a post, a user can view the entire post content. **Completed**
 
-- Every user shall have his/her blog home page at <sitename>/<username>. This page shall show a list of all posts by the particular user, with most recent posts on top. This list of blog posts shall also be paginated, with 8 posts per page. On clicking a post, a user can view the entire post content.
+- Every user shall have his/her blog home page at <sitename>/<username>. This page shall show a list of all posts by the particular user, with most recent posts on top. This list of blog posts shall also be paginated, with 8 posts per page. On clicking a post, a user can view the entire post content. **Completed**
 
 - A blog post has the URL <sitename>/<username>/<post_unique_slug_from_title>.
 
-- A blog post has a post title and post content. Anyone can view a blog post without login.
+- A blog post has a post title and post content. Anyone can view a blog post without login. **Completed**
 
 - However, you need to login to comment on a blog post. 
 
