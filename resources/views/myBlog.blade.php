@@ -12,7 +12,7 @@
                         <div class="excerpt-head">
                             {{ $blog->excerpt }}
                         </div>
-                     <a href={{"/details/$blog->slug"}} style="display:flex;align-self:flex-end;justify-self: flex-end;margin-right:10px;">Know more</a>
+                     <a href={{"/".$blog->user->username."/".$blog->slug}} style="display:flex;align-self:flex-end;justify-self: flex-end;margin-right:10px;">Know more</a>
                     </div>
                 @endforeach
             </div>

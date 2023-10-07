@@ -15,7 +15,7 @@ class BlogsController extends Controller
     public function myblogs($username){
         if(auth()->check())
         {
-        return view('myBlog',['blogs'=>blogs::user(auth()->id())->sortByDesc('id')]);
+        return view('myBlog',['blogs'=>blogs::userData(auth()->id())->sortByDesc('id')]);
         }
         else{
             return redirect('/');
@@ -27,10 +27,10 @@ class BlogsController extends Controller
 
         $rules=[
             "user_id"=>'required',
-             "slug"=>'required|min:3|max:100',
-             "title"=>'required|min:3|max:200',
-             "content"=>'required|min:10|max:5000',
-             "excerpt"=>'required|min:3|max:2000'
+             "slug"=>'required|min:3|max:100|alpha_dash',
+             "title"=>'required|min:3|max:200|alpha',
+             "content"=>'required|min:10|max:5000|alpha',
+             "excerpt"=>'required|min:3|max:2000|alpha'
         ];
 
         $valid=Validator::make(request()->all(),$rules);
@@ -47,9 +47,11 @@ class BlogsController extends Controller
 
     }
 
-    public function blogsdetailview($slug) {
-        //  return view('blogDetailsView',['blog'=>blogs::select('title','content')->where('slug',request()->query("slug"))->get()]);
+    public function blogsdetailview($username,$slug) {
          return view('blogDetailsView',['blog'=>blogs::slug($slug)]);
+            }
+    public function blogsdetail(blogs $slug) {
+         return view('blogDetailsView',['blog'=>$slug]);
             }
 
 }

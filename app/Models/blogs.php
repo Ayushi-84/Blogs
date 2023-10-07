@@ -15,11 +15,28 @@ class blogs extends Model
 
   public static function slug($slug)
 {
-return static::all()->firstWhere('slug',$slug);
+$data=static::all()->firstWhere('slug',$slug);
+if(! $data)
+{
+    abort(404);
 }
-  public static function user($user)
+return $data;
+}
+
+public function getRouteKeyName()
+{
+    return 'slug';
+}
+
+
+
+  public static function userData($user)
 {
 return static::all()->where('user_id',$user);
+}
+  public function user()
+{
+return $this->belongsTo(User::class);
 }
 
 }
