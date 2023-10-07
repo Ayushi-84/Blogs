@@ -36,7 +36,19 @@ header div {
     width: 87%;
 }
 
-header form button{
+.details-body{
+    width: 90%;
+    height: 400px;
+    background: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+header form button {
     border: none;
     color: #000;
     font-size: 18px;
