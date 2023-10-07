@@ -26,6 +26,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public static function user($user)
+    {
+    return static::all()->firstWhere('id',$user);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

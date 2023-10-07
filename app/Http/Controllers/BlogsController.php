@@ -12,7 +12,7 @@ class BlogsController extends Controller
     public function blogs(){
         return view('blogs',['blogs'=>blogs::all()->sortByDesc('id')]);
     }
-    public function myblogs(){
+    public function myblogs($username){
         if(auth()->check())
         {
         return view('myBlog',['blogs'=>blogs::user(auth()->id())->sortByDesc('id')]);

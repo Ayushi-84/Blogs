@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>All blogs-Blog</title>
-    <link href="/css/blog.css?v=4" type="text/css" rel="stylesheet">
+    <link href="/css/blog.css?v=5" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <script src="/js/blog.js"></script>
 </head>
@@ -18,7 +18,17 @@
             <div>
                 Renderbit Technologies
             </div>
-
+            @auth
+            <form method="POST" action="/logout">
+                @csrf
+<button>Log out</button>
+            </form>
+            @else
+            <form method="GET" action="/signin">
+                @csrf
+<button>Log in</button>
+            </form>
+            @endauth
         </header>
         <div class="middle-body">
             <div class="grid-div">
@@ -131,7 +141,7 @@
                 </div>
             </div>
         </div>
-
+          @if(auth()->check())
         <div class="create-blog" id="createBlog">
           <form method="POST" action="/blogs" class="create-box">
             @csrf
@@ -149,6 +159,7 @@
         <button class="plus-button" onclick="showCreateBlog()">
             <i class="far fa-plus"></i>
         </button>
+        @endif
     </div>
 </body>
 
