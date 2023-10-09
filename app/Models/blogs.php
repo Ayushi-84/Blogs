@@ -11,32 +11,29 @@ class Blogs extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-  protected $guarded=['id'];
+    protected $guarded = ['id'];
 
-  public static function slug($slug)
-{
-$data=static::all()->firstWhere('slug',$slug);
-if(! $data)
-{
-    abort(404);
-}
-return $data;
-}
+    public static function slug($slug)
+    {
+        $data = static::all()->firstWhere('slug', $slug);
+        if (!$data) {
+            abort(404);
+        }
+        return $data;
+    }
 
-public function getRouteKeyName()
-{
-    return 'slug';
-}
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
-
-
-  public static function userData($user)
-{
-return static::latest()->paginate(8)->where('user_id',$user);
-}
-  public function user()
-{
-return $this->belongsTo(User::class);
-}
-
+    public static function userData($user)
+    {
+        return static::latest()->paginate(8)->where('user_id', $user);
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

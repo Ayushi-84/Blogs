@@ -20,7 +20,7 @@ class LoginController extends Controller
         ]);
 
         if (auth()->attempt($data)) {
-            $userData = User::user(auth()->id());
+            $userData = User::userId(auth()->id());
             auth()->login($userData);
             $name = $userData->username;
             return redirect("/$name")->with('success', 'Login Successfully');

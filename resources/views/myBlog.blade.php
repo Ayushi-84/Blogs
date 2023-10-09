@@ -1,4 +1,5 @@
 <x-layout title="My Blogs">
+    @if($blogs->count()>0)
     <div class="middle-body">
         <div class="grid-div">
             @foreach ($blogs as $blog)
@@ -21,4 +22,14 @@
     <div style="height: 100px;margin:50px">
         {{ $blogs->links() }}
     </div>
+    @else
+    <div class="no-post">
+        <div>
+       Oops! There is no post to show.
+        </div>
+       <div>
+        Click on the plus button to add new post.
+       </div>
+    </div>
+    @endif
 </x-layout>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blogs;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
@@ -11,14 +12,14 @@ class BlogsController extends Controller
 {
     public function blogs()
     {
-        return view('blogs', ['blogs' => Blogs::latest()->paginate(8)]);
+        return view('blogs', ['blogs' => Blogs::latest()->with('user')->paginate(8)]);
     }
-    public function myblogs($username)
+    public function myblogs(User $username)
     {
-        if (auth()->check() && auth()->user()->username === $username) {
-            return view('myBlog', ['blogs' => Blogs::userData(auth()->id())]);
+        if (auth()->user()->username === $username->username) {
+            return view('myBlog', ['blogs' => $username->blogs()->latest()->with('user')->paginate(8)]);
         } else {
-            return redirect('/');
+            abort(401);
         }
     }
 

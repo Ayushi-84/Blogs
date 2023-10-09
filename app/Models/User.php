@@ -26,10 +26,17 @@ class User extends Authenticatable
         'password',
     ];
 
-    public static function user($user)
+    public static function userId($user)
     {
     return static::all()->firstWhere('id',$user);
     }
+
+    public function blogs()
+    {
+    return $this->hasMany(Blogs::class);
+    }
+
+
 
     /**
      * The attributes that should be hidden for serialization.
