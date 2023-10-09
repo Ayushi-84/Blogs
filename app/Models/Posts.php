@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Blogs extends Model
+class Posts extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $guarded = ['id'];
 
-    public static function slug($slug)
+    public static function findSlug($slug)
     {
         $data = static::all()->firstWhere('slug', $slug);
         if (!$data) {
@@ -31,9 +31,10 @@ class Blogs extends Model
     {
         return static::latest()->paginate(8)->where('user_id', $user);
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 }

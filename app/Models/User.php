@@ -31,9 +31,9 @@ class User extends Authenticatable
     return static::all()->firstWhere('id',$user);
     }
 
-    public function blogs()
+    public function posts()
     {
-    return $this->hasMany(Blogs::class);
+    return $this->hasMany(Posts::class);
     }
 
 
