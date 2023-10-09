@@ -8,23 +8,24 @@ use Illuminate\Support\Facades\Cache;
 
 class LoginController extends Controller
 {
-    public function login(){
+    public function login()
+    {
         return view('signIn');
     }
-    public function verify(){
-        $data= request()->validate([
-             "email"=>'required|email|min:11|max:50',
-             "password"=>'required|min:3|max:20'
+    public function verify()
+    {
+        $data = request()->validate([
+            "email" => 'required|email|min:11|max:50',
+            "password" => 'required|min:3|max:20'
         ]);
 
-        if(auth()->attempt($data))
-        {
-             $userData=User::user(auth()->id());
+        if (auth()->attempt($data)) {
+            $userData = User::user(auth()->id());
             auth()->login($userData);
-            $name=$userData->username;
-            return redirect("/$name")->with('success','Login Successfully');
+            $name = $userData->username;
+            return redirect("/$name")->with('success', 'Login Successfully');
         }
 
-        return back()->withErrors(['email'=>"Invalid/Incorrect email address"]);
+        return back()->withErrors(['email' => "Invalid/Incorrect email address"]);
     }
 }
