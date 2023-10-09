@@ -18,6 +18,7 @@
             @endforeach
         </div>
     </div>
-
-    {{-- {{ $blogs->links() }} --}}
+    <div style="height: 100px;margin:50px">
+        {{ $blogs->links() }}
+    </div>
 </x-layout>

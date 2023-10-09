@@ -32,7 +32,7 @@ public function getRouteKeyName()
 
   public static function userData($user)
 {
-return static::paginate(8)->where('user_id',$user);
+return static::latest()->paginate(8)->where('user_id',$user);
 }
   public function user()
 {

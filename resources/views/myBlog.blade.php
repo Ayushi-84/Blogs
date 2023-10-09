@@ -18,4 +18,7 @@
             @endforeach
         </div>
     </div>
+    <div style="height: 100px;margin:50px">
+        {{ $blogs->links() }}
+    </div>
 </x-layout>

@@ -11,12 +11,12 @@ class BlogsController extends Controller
 {
     public function blogs()
     {
-        return view('blogs', ['blogs' => Blogs::paginate(8)->sortByDesc('id')]);
+        return view('blogs', ['blogs' => Blogs::latest()->paginate(8)]);
     }
     public function myblogs($username)
     {
         if (auth()->check() && auth()->user()->username === $username) {
-            return view('myBlog', ['blogs' => Blogs::userData(auth()->id())->sortByDesc('id')]);
+            return view('myBlog', ['blogs' => Blogs::userData(auth()->id())]);
         } else {
             return redirect('/');
         }
