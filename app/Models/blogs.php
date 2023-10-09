@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class blogs extends Model
+class Blogs extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -32,7 +32,7 @@ public function getRouteKeyName()
 
   public static function userData($user)
 {
-return static::all()->where('user_id',$user);
+return static::paginate(8)->where('user_id',$user);
 }
   public function user()
 {

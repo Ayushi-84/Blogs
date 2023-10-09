@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}-Blog</title>
-    <link href="/css/blog.css?v=6" type="text/css" rel="stylesheet">
+    <link href="/css/blog.css?v=7" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <script src="/js/blog.js"></script>
 </head>
@@ -126,7 +126,7 @@
         </div>
         @auth
             <div class="create-blog" id="createBlog">
-                <form method="POST" action="/blogs" class="create-box">
+                <form method="POST" action="/" class="create-box">
                     @csrf
                     <div class="title-head" style="margin-bottom: 3%">
                         Create new blog

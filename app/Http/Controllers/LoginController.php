@@ -22,7 +22,7 @@ class LoginController extends Controller
              $userData=User::user(auth()->id());
             auth()->login($userData);
             $name=$userData->username;
-            return redirect('/myBlog/'.$name)->with('success','Login Successfully');
+            return redirect("/$name")->with('success','Login Successfully');
         }
 
         return back()->withErrors(['email'=>"Invalid/Incorrect email address"]);

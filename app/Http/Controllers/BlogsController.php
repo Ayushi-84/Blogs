@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\blogs;
+use App\Models\Blogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Validator;
 class BlogsController extends Controller
 {
     public function blogs(){
-        return view('blogs',['blogs'=>blogs::all()->sortByDesc('id')]);
+        return view('blogs',['blogs'=>Blogs::paginate(8)->sortByDesc('id')]);
     }
     public function myblogs($username){
-        if(auth()->check())
+        if(auth()->check() && auth()->user()->username===$username)
         {
-        return view('myBlog',['blogs'=>blogs::userData(auth()->id())->sortByDesc('id')]);
+        return view('myBlog',['blogs'=>Blogs::userData(auth()->id())->sortByDesc('id')]);
         }
         else{
             return redirect('/');
@@ -28,9 +28,9 @@ class BlogsController extends Controller
         $rules=[
             "user_id"=>'required',
              "slug"=>'required|min:3|max:100|alpha_dash',
-             "title"=>'required|min:3|max:200|alpha',
-             "content"=>'required|min:10|max:5000|alpha',
-             "excerpt"=>'required|min:3|max:2000|alpha'
+             "title"=>'required|min:3|max:200',
+             "content"=>'required|min:10|max:5000',
+             "excerpt"=>'required|min:3|max:2000'
         ];
 
         $valid=Validator::make(request()->all(),$rules);
@@ -40,17 +40,17 @@ class BlogsController extends Controller
             return dd('Not Validated',$valid);
         }
         else{
-            blogs::create($valid->getData());
+            Blogs::create($valid->getData());
 
-            return redirect('/blogs');
+            return redirect('/');
         }
 
     }
 
     public function blogsdetailview($username,$slug) {
-         return view('blogDetailsView',['blog'=>blogs::slug($slug)]);
+         return view('blogDetailsView',['blog'=>Blogs::slug($slug)]);
             }
-    public function blogsdetail(blogs $slug) {
+    public function blogsdetail(Blogs $slug) {
          return view('blogDetailsView',['blog'=>$slug]);
             }
 

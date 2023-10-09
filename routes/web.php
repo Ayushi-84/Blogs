@@ -22,8 +22,8 @@ Route::post('/signin',[LoginController::class,'verify']);
 Route::get('/signup',[RegisterController::class,'create']);
 Route::post('/signup',[RegisterController::class,'register']);
 Route::get('/',[BlogsController::class,'blogs']);
-Route::get('/myBlog/{username}',[BlogsController::class,'myblogs']);
+Route::get('/{username}',[BlogsController::class,'myblogs']);
 Route::post('/',[BlogsController::class,'createpost']);
-{Route::get('/{username}/{slug}',[BlogsController::class,'blogsdetailview']);}
+Route::get('/{username}/{slug}',[BlogsController::class,'blogsdetailview']);
 Route::get('/{slug}',[BlogsController::class,'blogsdetail']);
 Route::post('/logout',[SessionsController::class,'destroy']);
