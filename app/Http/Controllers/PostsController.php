@@ -57,9 +57,12 @@ class PostsController extends Controller
 
     public function blogsdetailview($username, $slug)
     {
+        if(auth()->check() && auth()->user()->username === $username)
         return view('blogDetailsView', ['blog' => Posts::findSlug($slug)]);
+        else
+        return redirect('/signin');
     }
-    
+
     public function blogsdetail($post)
     {
         return view('blogDetailsView', ['blog' => $post]);

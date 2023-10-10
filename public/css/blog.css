@@ -33,7 +33,7 @@ header div {
     font-size: 24px;
     font-weight: 700;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    width: 87%;
+    width: 85%;
 }
 
 .details-body{
@@ -55,6 +55,12 @@ header form button {
     font-weight: 700;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     cursor: pointer;
+}
+
+header a{
+   margin-left: 2%;
+   font-size: 24px;
+   cursor: pointer;
 }
 
 .middle-body {

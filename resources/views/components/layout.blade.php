@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}-Blog</title>
-    <link href="/css/blog.css?v=1" type="text/css" rel="stylesheet">
+    <link href="/css/blog.css?v=10" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <script src="/js/blog.js"></script>
@@ -24,6 +24,7 @@
                     @csrf
                     <button>Log out</button>
                 </form>
+                <a href="/{{auth()->user()->username}}"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
             @else
                 <form method="GET" action="/signin">
                     @csrf
