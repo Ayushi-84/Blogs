@@ -12,6 +12,7 @@
             <div class="comment-head">
                 Comments
             </div>
+            @auth
             <form method="POST" action="/comment" style="display: flex;flex-direction:column;align-items:flex-start">
                 @csrf
                 <input name="user_id" id="user_id" hidden value={{ auth()->id() }} />
@@ -24,6 +25,7 @@
                     style="margin-top: 10px;margin-left:5px;width:150px;height:40px;background-color:rgb(236, 232, 232);border-radius:20px;"
                     type="submit">Add Comment</button>
             </form>
+            @endauth
             @if ($blog->comments->count() > 0)
                 <ul style="list-style:disc;">
                     @foreach ($blog->comments as $review)
