@@ -62,9 +62,49 @@ class PostsController extends Controller
         else
         return redirect('/signin');
     }
+    public function edit($username, $slug)
+    {
+        if(auth()->check() && auth()->user()->username === $username)
+        return view('editBlog', ['blog' => Posts::findSlug($slug)]);
+        else
+        return redirect('/signin');
+    }
+    public function delete($username, $slug)
+    {
+        if(auth()->check() && auth()->user()->username === $username)
+        return view('deleteBlog', ['blog' => Posts::findSlug($slug)]);
+        else
+        return redirect('/signin');
+    }
 
     public function blogsdetail($post)
     {
         return view('blogDetailsView', ['blog' => $post]);
+    }
+
+    public function editPost($id){
+
+        $post = Posts::find($id);
+        $rules = [
+            "content" => 'required|min:10|max:5000',
+            "excerpt" => 'required|min:3|max:2000'
+        ];
+
+        $valid = Validator::make(request()->all(), $rules);
+
+        if ($valid->fails()) {
+            return dd('Not Validated', $valid);
+        } else {
+            $post->update($valid->getData());
+
+            return redirect('/'.auth()->user()->username);
+        }
+
+    }
+    public function deletePost($id){
+        $post = Posts::find($id);
+        $post->delete();
+
+        return redirect('/'.auth()->user()->username);
     }
 }

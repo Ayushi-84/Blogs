@@ -25,4 +25,8 @@ Route::get('/', [PostsController::class, 'blogs']);
 Route::get('/{username:username}', [PostsController::class, 'myblogs']);
 Route::post('/', [PostsController::class, 'createpost']);
 Route::get('/{username}/{slug}', [PostsController::class, 'blogsdetailview']);
+Route::get('/{username}/edit/{slug}', [PostsController::class, 'edit']);
+Route::get('/{username}/delete/{slug}', [PostsController::class, 'delete']);
 Route::post('/logout', [SessionsController::class, 'destroy'])->name('logout');
+Route::patch('/edit/{id}', [PostsController::class, 'editPost']);
+Route::delete('/delete/{id}', [PostsController::class, 'deletePost']);
