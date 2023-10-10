@@ -4,6 +4,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,7 @@ Route::get('/{username}/delete/{slug}', [PostsController::class, 'delete']);
 Route::post('/logout', [SessionsController::class, 'destroy'])->name('logout');
 Route::patch('/edit/{id}', [PostsController::class, 'editPost']);
 Route::delete('/delete/{id}', [PostsController::class, 'deletePost']);
+Route::post('/comment', [CommentsController::class, 'createComment']);
+Route::delete('/deleteComment/{id}', [CommentsController::class, 'deleteComment']);
+Route::get('/{username}/editComment/{id}', [CommentsController::class, 'edit']);
+Route::patch('/editComment/{id}', [CommentsController::class, 'editComment']);

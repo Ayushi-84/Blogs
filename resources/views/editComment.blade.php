@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $title }}-Blog</title>
-    <link href="/css/blog.css?v=1" type="text/css" rel="stylesheet">
+    <title>Edit Comment-Blog</title>
+    <link href="/css/blog.css?v=10" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <script src="/js/blog.js"></script>
@@ -24,7 +24,7 @@
                     @csrf
                     <button>Log out</button>
                 </form>
-                <a href="/{{auth()->user()->username}}"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                <a href="/{{ auth()->user()->username }}"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
             @else
                 <form method="GET" action="/signin">
                     @csrf
@@ -32,7 +32,19 @@
                 </form>
             @endauth
         </header>
-        {{ $slot }}
+        <div class="middle-body">
+            <div class="details-body">
+                <form method="POST" action="/editComment/{{ $comment->id }}" class="edit-box">
+                    @csrf
+                    @method('PATCH')
+                    <div class="title-head" style="margin-bottom: 3%">
+                        Edit Comment
+                    </div>
+                    <textarea name="comment" id="comment" class="details-t" required placeholder="Write comment..." rows="3">{{ $comment->comment }}</textarea>
+                    <button type="submit" class="create-button">Edit post</button>
+                </form>
+            </div>
+        </div>
         <div class="footer">
             <div class="card">
                 <div class="element1">
@@ -126,29 +138,6 @@
                 </div>
             </div>
         </div>
-        @auth
-            <div class="create-blog" id="createBlog">
-                <form method="POST" action="/" class="create-box">
-                    @csrf
-                    <div class="title-head" style="margin-bottom: 3%">
-                        Create new blog
-                    </div>
-                    <input name="user_id" id="user_id" hidden value="{{ auth()->id() }}" />
-                    <input name="slug" id="slug" type="text" class="details" required
-                        placeholder="Enter slug for your post" />
-                    <input name="title" id="title" type="text" class="details" required
-                        placeholder="Enter title for your post" />
-                    <textarea name="content" id="content" class="details-t" required placeholder="Enter content for your post"
-                        rows="3"></textarea>
-                    <textarea name="excerpt" id="excerpt" class="details-t" required placeholder="Enter excerpt for your post"
-                        rows="3"></textarea>
-                    <button type="submit" class="create-button">Create new blog</button>
-                </form>
-            </div>
-            <button class="plus-button" onclick="showCreateBlog()">
-                <i class="far fa-plus"></i>
-            </button>
-        @endauth
     </div>
 </body>
 
