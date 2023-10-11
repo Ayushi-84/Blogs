@@ -8,10 +8,10 @@
                             <img src="/images/language.jpg" style="width: 80%;height:90%" />
                         </div>
                         <div class="title-head">
-                            {{ $blog->title }}
+                            {!! $blog->title !!}
                         </div>
                         <div class="excerpt-head">
-                            {{ $blog->excerpt }}
+                            {!! $blog->excerpt !!}
                         </div>
                         <div
                             style="display:flex;align-self:flex-end;justify-content: space-between;margin-right:10px;width:100%">

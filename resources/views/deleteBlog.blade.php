@@ -40,7 +40,6 @@
                     <div class="title-head" style="margin-bottom: 3%">
                         Delete Post
                     </div>
-                    <input name="user_id" id="user_id" disabled hidden value="{{ auth()->id() }}" />
                     <input name="slug" id="slug" type="text" disabled class="details" required
                         value="{{ $blog->slug }}" />
                     <input name="title" id="title" disabled type="text" class="details" required

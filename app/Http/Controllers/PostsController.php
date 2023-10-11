@@ -24,10 +24,10 @@ class PostsController extends Controller
             abort(401);
         }
         else {
-            $post=Posts::whereSlug($name)->get()->first();
-            if($post)
+            $posts=Posts::whereSlug($name)->get()->first();
+            if($posts)
             {
-                   return $this->blogsDetail($post);
+                   return $this->blogsDetail($posts);
             }
             abort(404);
         }
@@ -37,7 +37,6 @@ class PostsController extends Controller
     {
 
         $rules = [
-            "user_id" => 'required',
             "slug" => 'required|min:3|max:100|alpha_dash',
             "title" => 'required|min:3|max:200',
             "content" => 'required|min:10|max:5000',
@@ -49,16 +48,17 @@ class PostsController extends Controller
         if ($valid->fails()) {
             return dd('Not Validated', $valid);
         } else {
-            Posts::create($valid->getData());
+            Posts::create([...$valid->getData(),'user_id'=>auth()->id()]);
 
             return redirect('/');
         }
     }
 
     public function blogsdetailview($username, $slug)
-    {
+    {   $posts=Posts::whereSlug($slug)->get()->first();
         if(auth()->check() && auth()->user()->username === $username)
-        return view('blogDetailsView', ['blog' => Posts::findSlug($slug)]);
+        return view('blogDetailsView', ['blog' => $posts,
+        'comment'=>$posts->comments()->latest()->with('user')->paginate(10)]);
         else
         return redirect('/signin');
     }
@@ -77,9 +77,10 @@ class PostsController extends Controller
         return redirect('/signin');
     }
 
-    public function blogsdetail($post)
+    public function blogsdetail($posts)
     {
-        return view('blogDetailsView', ['blog' => $post]);
+        return view('blogDetailsView', ['blog' => $posts,
+    'comment'=>$posts->comments()->latest()->with('user')->paginate(10)]);
     }
 
     public function editPost($id){
@@ -103,7 +104,10 @@ class PostsController extends Controller
     }
     public function deletePost($id){
         $post = Posts::find($id);
+        if(auth()->id()===$post->user->id)
         $post->delete();
+        else
+        abort(401);
 
         return redirect('/'.auth()->user()->username);
     }

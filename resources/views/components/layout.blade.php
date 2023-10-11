@@ -133,7 +133,6 @@
                     <div class="title-head" style="margin-bottom: 3%">
                         Create new blog
                     </div>
-                    <input name="user_id" id="user_id" hidden value="{{ auth()->id() }}" />
                     <input name="slug" id="slug" type="text" class="details" required
                         placeholder="Enter slug for your post" />
                     <input name="title" id="title" type="text" class="details" required

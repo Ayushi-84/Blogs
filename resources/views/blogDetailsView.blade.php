@@ -1,11 +1,11 @@
-<x-layout title="{{ $blog->title }}">
+<x-layout title="{!! $blog->title !!}">
     <div class="middle-body-detail">
         <div class="details-body">
             <div class="title-head">
-                {{ $blog->title }}
+                {!! $blog->title !!}
             </div>
             <div class="excerpt-head">
-                {{ $blog->content }}
+                {!! $blog->content !!}
             </div>
         </div>
         <div class="comments">
@@ -13,10 +13,8 @@
                 Comments
             </div>
             @auth
-            <form method="POST" action="/comment" style="display: flex;flex-direction:column;align-items:flex-start">
+            <form method="POST" action="/comment/{{$blog->id}}" style="display: flex;flex-direction:column;align-items:flex-start">
                 @csrf
-                <input name="user_id" id="user_id" hidden value={{ auth()->id() }} />
-                <input name="posts_id" id="posts_id" hidden value={{ $blog->id }} />
                 <textarea name="comment" id="comment" class="details-t" required placeholder="Write comment..." rows="3"></textarea>
                 @error('comment')
                     <div class="message">{{ $message }}</div>
@@ -26,9 +24,9 @@
                     type="submit">Add Comment</button>
             </form>
             @endauth
-            @if ($blog->comments->count() > 0)
+            @if ($comment->count() > 0)
                 <ul style="list-style:disc;">
-                    @foreach ($blog->comments as $review)
+                    @foreach ($comment as $review)
                         <li class="comment-head">
                             <div style="display:flex;flex-direction:row;width:100%;">
                                 By {{ $review->user->firstName }} {{ $review->user->lastName }}
@@ -50,11 +48,14 @@
                                 @endauth
                             </div>
                             <div class="comment-data">
-                                {{ $review->comment }}
+                                {!! $review->comment !!}
                             </div>
                         </li>
                     @endforeach
                 </ul>
+                <div style="height: 100px;margin-top:50px">
+                    {{ $comment->links() }}
+                </div>
             @endif
         </div>
     </div>

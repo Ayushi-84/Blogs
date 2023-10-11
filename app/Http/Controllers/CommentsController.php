@@ -3,28 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comments;
+use App\Models\Posts;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class CommentsController extends Controller
 {
-    public function createComment()
+    public function createComment(Posts $id)
     {
 
         $rules = request()->validate([
-            "user_id" => 'required',
-            "posts_id" => 'required',
             "comment" => 'required|min:3|max:2000'
         ]);
-        Comments::create($rules);
+        // Comments::create($rules);
+// dd($id);
+        $id->comments()->create([...$rules,'user_id'=>auth()->id(),'posts_id'=>$id->id]);
 
-        return redirect('/');
+        return back();
     }
 
     public function deleteComment($id)
     {
         $comment = Comments::find($id);
+        if(auth()->id()===$comment->user->id)
         $comment->delete();
+        else
+        abort(401);
 
         return back();
     }
@@ -52,7 +57,7 @@ class CommentsController extends Controller
         } else {
             $comment->update($valid->getData());
 
-            return redirect('/');
+            return back();
         }
     }
 }
